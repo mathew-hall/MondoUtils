@@ -7,7 +7,8 @@ This contains your OAuth code that can be converted to an
 access token.
 
 Paste the url you got from mondo here to get a token:
-INFO;
+INFO
+
 read url
 params="$(echo $url | cut -d '?' -f 2 | tr '&' '\n' | grep code | tr -d '\n')"
 code=$(echo $params | cut -d '=' -f 2) 
