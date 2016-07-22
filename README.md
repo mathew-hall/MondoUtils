@@ -23,7 +23,7 @@ Once you have a Client ID, you can log in by running `./login.sh`.
 
 	% ./login.sh 
 
-This will open the browser to the Mondo authorisation page. You might see a request from your firewall to allow Python to listen n port 8118; allow it. Enter your email address in the Mondo log in page an Mondo will send you an activation link.
+This will open the browser to the Mondo authorisation page. You might see a request from your firewall to allow Python to listen on port 8118; allow it. Enter your email address in the Mondo log in page an Mondo will send you an activation link.
 
 Follow that link and you will be taken to a `localhost` URL. This contains the code that gets exchanged for an OAuth token. The Python web server will pick that up and exit.
 
@@ -88,6 +88,6 @@ The `./ofx.sh` script accepts a filename for a JSON file and transforms it into 
 
 This is a quick and dirty hack for a number of reasons:
 
-1. It doesn't have a proper redirect URL
-2. Tokens expire and will need to be regenerated (instead of refreshing them)
-3. It leaves credentials in the clear on your hard drive
+1. Tokens expire and will need to be regenerated (instead of refreshing them)
+2. It leaves credentials in the clear on your hard drive
+3. The OFX export is based on an OFX file I had laying around
