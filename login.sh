@@ -1,6 +1,5 @@
 . ./credentials
-
-StateToken=$(dd if=/dev/random bs=1 count=32 | xxd -p)
+StateToken=$(dd if=/dev/random bs=1 count=32 2>/dev/null | xxd -p)
 
 cat <<INFO
 Your browser will open asking you to log in to Mondo.
