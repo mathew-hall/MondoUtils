@@ -1,16 +1,19 @@
+#!/usr/bin/env bash
+set -e
 . ./credentials
 StateToken=$(dd if=/dev/random bs=1 count=32 2>/dev/null | xxd -p)
 
-cat <<INFO
-Your browser will open asking you to log in to Mondo.
-You will get an email. Follow that link and you will be
-redirected to localhost. 
-
-Copy the URL (from the URL bar) and run ./exchange.sh
-INFO
-
 open "https://auth.getmondo.co.uk/?\
 client_id=$ClientID&\
-redirect_uri=http://localhost&\
+redirect_uri=http://localhost:8118/credentials&\
 response_type=code&\
 state=$StateToken"
+
+export code=$(python get_token.py)
+
+http -b --form POST 'https://api.getmondo.co.uk/oauth2/token' \
+	grant_type=authorization_code \
+	client_id=$ClientID \
+	client_secret=$ClientSecret \
+	redirect_uri='http://localhost:8118/credentials' \
+	code=$code | jq -r .access_token > .access_token
