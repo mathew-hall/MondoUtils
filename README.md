@@ -6,6 +6,8 @@ This is a collection of scripts that:
 2. Downloads transactions via the Mondo API
 3. Exports Mondo transaction records as OFX files
 
+Unlike other alternatives it runs on a local computer rather than on a phone or another website.
+
 # Dependencies
 
 These tools use `httpie`, Python 2.7, and `jq`.
