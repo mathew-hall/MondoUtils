@@ -8,7 +8,7 @@ This is a collection of scripts that:
 
 # Dependencies
 
-These tools use `httpie` and `jq`.
+These tools use `httpie`, Python 2.7, and `jq`.
 
 # Usage
 
@@ -22,28 +22,12 @@ Copy the client ID and client secret into the `.client_id` and `.client_secret` 
 Once you have a Client ID, you can log in by running `./login.sh`. 
 
 	% ./login.sh 
-	Your browser will open asking you to log in to Mondo.
-	You will get an email. Follow that link and you will be
-	redirected to localhost. 
-    
-	Copy the URL (from the URL bar) and run ./exchange.sh
 
-This will open the browser to the Mondo authorisation page. Enter your email address and you will get a link to authorise your app. Follow that link and you will be taken to a `localhost` URL. This contains the code that gets exchanged for an OAuth token. *Copy and paste* the localhost URL.
+This will open the browser to the Mondo authorisation page. You might see a request from your firewall to allow Python to listen n port 8118; allow it. Enter your email address in the Mondo log in page an Mondo will send you an activation link.
 
-Use `./exchange.sh` to get an authorisation token from the code in the URL:
+Follow that link and you will be taken to a `localhost` URL. This contains the code that gets exchanged for an OAuth token. The Python web server will pick that up and exit.
 
-	% ./exchange.sh 
-	Your web browser should have opened a localhost address.
-	This contains your OAuth code that can be converted to an
-	access token.
-	
-	Paste the url you got from mondo here to get a token:
-
-Enter the token and hit return:
-
-	http://localhost/?code=<lots of chars>&state=<more chars>
-
-If this works the token will be dumped into `.access_token`. You can now use the [API calls listed in the documentation](https://getmondo.co.uk/docs/#acquire-an-access-token). The included scripts automate the `accounts` and `transaction` endpoints.
+If this works the authentication token will be dumped into `.access_token`. You can now use the [API calls listed in the documentation](https://getmondo.co.uk/docs/#acquire-an-access-token). The included scripts automate the `accounts` and `transaction` endpoints.
 
 # API Calls
 
