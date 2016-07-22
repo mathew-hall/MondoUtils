@@ -1,0 +1,6 @@
+*.json
+*.ofx
+.account_id
+.client_id
+.client_secret
+.access_token
